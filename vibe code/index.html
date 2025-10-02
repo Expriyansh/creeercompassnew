@@ -1,0 +1,2868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Compass - Your Path to Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        'secondary': {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
+        }
+        .gradient-bg-dark {
+            background: linear-gradient(135deg, #1e40af 0%, #15803d 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        .dark {
+            color-scheme: dark;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 200px;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front {
+            background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
+            color: white;
+        }
+        .dark .flip-card-front {
+            background: linear-gradient(135deg, #1e40af 0%, #15803d 100%);
+        }
+        .flip-card-back {
+            background: white;
+            color: #374151;
+        }
+        .dark .flip-card-back {
+            background: #374151;
+            color: #f9fafb;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 dark:bg-gray-900">
+    <!-- Theme Toggle Button -->
+    <div class="fixed top-4 right-4 z-50">
+        <button onclick="toggleTheme()" class="theme-toggle bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-600" id="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="w-6 h-6" id="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="w-6 h-6 hidden" id="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="gradient-bg dark:gradient-bg-dark text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Career Compass</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">Navigate your path to success in tech careers</p>
+            <div class="w-24 h-1 bg-white mx-auto rounded-full mb-8"></div>
+            <!-- Navigation Menu -->
+            <nav class="flex flex-wrap justify-center gap-4 text-sm">
+                <a href="#hero" class="nav-link px-4 py-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">Home</a>
+                <a href="#careers" class="nav-link px-4 py-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">Careers</a>
+                <a href="#roadmap" class="nav-link px-4 py-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">Roadmap</a>
+                <a href="#tutorials" class="nav-link px-4 py-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">Tutorials</a>
+                <a href="#faq" class="nav-link px-4 py-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">FAQ</a>
+                <a href="#contact" class="nav-link px-4 py-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">Contact</a>
+                <button id="authButton" onclick="openAuthModal()" class="px-4 py-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+                    <span id="authButtonText">Login</span>
+                </button>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Career Selector -->
+    <section id="careers" class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Choose Your Career Path</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <button onclick="selectCareer('webdev')" class="career-btn bg-primary-500 hover:bg-primary-600 text-white p-6 rounded-xl card-hover focus:outline-none focus:ring-4 focus:ring-primary-300 transition-all duration-300" data-career="webdev">
+                    <div class="text-4xl mb-4">💻</div>
+                    <h3 class="text-xl font-semibold">Web Development</h3>
+                    <p class="text-sm opacity-90 mt-2">Build amazing websites and web applications</p>
+                </button>
+                <button onclick="selectCareer('datascience')" class="career-btn bg-secondary-500 hover:bg-secondary-600 text-white p-6 rounded-xl card-hover focus:outline-none focus:ring-4 focus:ring-secondary-300 transition-all duration-300" data-career="datascience">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-semibold">Data Science</h3>
+                    <p class="text-sm opacity-90 mt-2">Extract insights from data</p>
+                </button>
+                <button onclick="selectCareer('aiml')" class="career-btn bg-purple-500 hover:bg-purple-600 text-white p-6 rounded-xl card-hover focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all duration-300" data-career="aiml">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="text-xl font-semibold">AI/ML</h3>
+                    <p class="text-sm opacity-90 mt-2">Create intelligent systems</p>
+                </button>
+                <button onclick="selectCareer('cybersecurity')" class="career-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-xl card-hover focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-300" data-career="cybersecurity">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-xl font-semibold">Cybersecurity</h3>
+                    <p class="text-sm opacity-90 mt-2">Protect digital assets</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Display -->
+    <section id="roadmap" class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Your Learning Roadmap</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">Track your progress and mark completed steps</p>
+                <div id="roadmapProgressHeader" class="max-w-md mx-auto">
+                    <!-- Progress header will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="roadmapSearch" 
+                        placeholder="Search roadmap steps..." 
+                        class="w-full px-4 py-3 pl-12 pr-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                        aria-label="Search roadmap steps"
+                    >
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <button 
+                        id="clearSearch" 
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none"
+                        aria-label="Clear search"
+                    >
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="searchResults" class="mt-2 text-sm text-gray-600 dark:text-gray-400 hidden">
+                    <span id="resultCount">0</span> results found
+                </div>
+            </div>
+            
+            <div id="roadmap-container" class="max-w-4xl mx-auto">
+                <div class="text-center text-gray-500 dark:text-gray-400 text-lg">
+                    Select a career path above to view your roadmap
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorials Section -->
+    <section id="tutorials" class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Learning Tutorials</h2>
+            
+            <!-- Tutorial Filters -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="flex flex-wrap justify-center gap-4 mb-6">
+                    <button onclick="filterTutorials('all')" class="tutorial-filter-btn px-4 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-300" data-filter="all">
+                        All Tutorials
+                    </button>
+                    <button onclick="filterTutorials('webdev')" class="tutorial-filter-btn px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300" data-filter="webdev">
+                        Web Development
+                    </button>
+                    <button onclick="filterTutorials('datascience')" class="tutorial-filter-btn px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300" data-filter="datascience">
+                        Data Science
+                    </button>
+                    <button onclick="filterTutorials('aiml')" class="tutorial-filter-btn px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300" data-filter="aiml">
+                        AI/ML
+                    </button>
+                    <button onclick="filterTutorials('cybersecurity')" class="tutorial-filter-btn px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300" data-filter="cybersecurity">
+                        Cybersecurity
+                    </button>
+                    <button onclick="filterTutorials('programming')" class="tutorial-filter-btn px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300" data-filter="programming">
+                        Programming
+                    </button>
+                    <button onclick="filterTutorials('video')" class="tutorial-filter-btn px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300" data-filter="video">
+                        📹 Videos Only
+                    </button>
+                </div>
+                
+                <!-- Tutorial Search -->
+                <div class="max-w-2xl mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1 relative">
+                            <input 
+                                type="text" 
+                                id="tutorialSearch" 
+                                placeholder="Search tutorials by title, description, or category..." 
+                                class="w-full px-4 py-3 pl-12 pr-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                                aria-label="Search tutorials"
+                            >
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="videoSearch" 
+                                placeholder="Search videos specifically..." 
+                                class="w-full sm:w-64 px-4 py-3 pl-12 pr-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                                aria-label="Search videos"
+                            >
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tutorials Grid -->
+            <div id="tutorialsGrid" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Web Development Tutorials -->
+                <div class="tutorial-card" data-category="webdev" data-difficulty="beginner" data-has-video="true">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full">Beginner</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">45 min</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">HTML & CSS Fundamentals</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Learn the building blocks of web development with hands-on projects and real-world examples.</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">Web Development</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium rounded-full flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        Video
+                                    </span>
+                                </div>
+                            </div>
+                            <button onclick="openTutorial('html-css-fundamentals')" class="w-full text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 rounded py-2 border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900 transition-all duration-300">
+                                Start Tutorial →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="webdev" data-difficulty="intermediate" data-has-video="true">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm font-medium rounded-full">Intermediate</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">React.js Complete Guide</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Master React components, hooks, state management, and build a complete application.</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">Web Development</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium rounded-full flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        Video
+                                    </span>
+                                </div>
+                            </div>
+                            <button onclick="openTutorial('react-complete-guide')" class="w-full text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 rounded py-2 border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900 transition-all duration-300">
+                                Start Tutorial →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="webdev" data-difficulty="advanced" data-has-video="true">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm font-medium rounded-full">Advanced</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">4 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Full-Stack Development</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Build a complete full-stack application with Node.js, Express, MongoDB, and React.</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">Web Development</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium rounded-full flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        Video
+                                    </span>
+                                </div>
+                            </div>
+                            <button onclick="openTutorial('full-stack-development')" class="w-full text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-primary-300 rounded py-2 border border-primary-200 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900 transition-all duration-300">
+                                Start Tutorial →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Science Tutorials -->
+                <div class="tutorial-card" data-category="datascience" data-difficulty="beginner" data-has-video="true">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full">Beginner</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">1 hour</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Python for Data Science</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Learn Python basics, NumPy, Pandas, and data manipulation techniques.</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm text-secondary-600 dark:text-secondary-400 font-medium">Data Science</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium rounded-full flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        Video
+                                    </span>
+                                </div>
+                            </div>
+                            <button onclick="openTutorial('python-data-science')" class="w-full text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-secondary-300 rounded py-2 border border-secondary-200 dark:border-secondary-700 hover:bg-secondary-50 dark:hover:bg-secondary-900 transition-all duration-300">
+                                Start Tutorial →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="datascience" data-difficulty="intermediate">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm font-medium rounded-full">Intermediate</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">3 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Machine Learning with Scikit-learn</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Implement classification, regression, and clustering algorithms with real datasets.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-secondary-600 dark:text-secondary-400 font-medium">Data Science</span>
+                                <button onclick="openTutorial('coming-soon')" class="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-secondary-300 rounded">Start Tutorial →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="datascience" data-difficulty="advanced">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm font-medium rounded-full">Advanced</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">6 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Deep Learning with TensorFlow</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Build neural networks, CNNs, RNNs, and deploy models to production.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-secondary-600 dark:text-secondary-400 font-medium">Data Science</span>
+                                <button onclick="openTutorial('coming-soon')" class="text-secondary-600 dark:text-secondary-400 hover:text-secondary-800 dark:hover:text-secondary-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-secondary-300 rounded">Start Tutorial →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Programming Language Tutorials -->
+                <div class="tutorial-card" data-category="programming" data-difficulty="beginner" data-has-video="true">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full">Beginner</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">JavaScript Fundamentals</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Learn JavaScript from scratch and build interactive web applications.</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm text-yellow-600 dark:text-yellow-400 font-medium">Programming</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium rounded-full flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        Video
+                                    </span>
+                                </div>
+                            </div>
+                            <button onclick="openTutorial('javascript-basics')" class="w-full text-yellow-600 dark:text-yellow-400 hover:text-yellow-800 dark:hover:text-yellow-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded py-2 border border-yellow-200 dark:border-yellow-700 hover:bg-yellow-50 dark:hover:bg-yellow-900 transition-all duration-300">
+                                Start Tutorial →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="programming" data-difficulty="beginner" data-has-video="true">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full">Beginner</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">3 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Java Programming Basics</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Master Java programming language with object-oriented concepts and real-world projects.</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm text-orange-600 dark:text-orange-400 font-medium">Programming</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium rounded-full flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        Video
+                                    </span>
+                                </div>
+                            </div>
+                            <button onclick="openTutorial('java-programming')" class="w-full text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-orange-300 rounded py-2 border border-orange-200 dark:border-orange-700 hover:bg-orange-50 dark:hover:bg-orange-900 transition-all duration-300">
+                                Start Tutorial →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI/ML Tutorials -->
+                <div class="tutorial-card" data-category="aiml" data-difficulty="beginner" data-has-video="true">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full">Beginner</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Introduction to AI & ML</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Understand AI concepts, machine learning types, and basic algorithms.</p>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-sm text-purple-600 dark:text-purple-400 font-medium">AI/ML</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium rounded-full flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        Video
+                                    </span>
+                                </div>
+                            </div>
+                            <button onclick="openTutorial('ai-ml-intro')" class="w-full text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 rounded py-2 border border-purple-200 dark:border-purple-700 hover:bg-purple-50 dark:hover:bg-purple-900 transition-all duration-300">
+                                Start Tutorial →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="aiml" data-difficulty="intermediate">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm font-medium rounded-full">Intermediate</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">4 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Computer Vision with OpenCV</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Process images, detect objects, and build computer vision applications.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-purple-600 dark:text-purple-400 font-medium">AI/ML</span>
+                                <button onclick="openTutorial('coming-soon')" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 rounded">Start Tutorial →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="aiml" data-difficulty="advanced">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm font-medium rounded-full">Advanced</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">8 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Natural Language Processing</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Build chatbots, sentiment analysis, and text generation models.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-purple-600 dark:text-purple-400 font-medium">AI/ML</span>
+                                <button onclick="openTutorial('coming-soon')" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 rounded">Start Tutorial →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cybersecurity Tutorials -->
+                <div class="tutorial-card" data-category="cybersecurity" data-difficulty="beginner">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full">Beginner</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">1 hour</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Cybersecurity Fundamentals</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Learn about threats, vulnerabilities, and basic security principles.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-red-600 dark:text-red-400 font-medium">Cybersecurity</span>
+                                <button onclick="openTutorial('coming-soon')" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-red-300 rounded">Start Tutorial →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="cybersecurity" data-difficulty="intermediate">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm font-medium rounded-full">Intermediate</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">3 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Ethical Hacking & Penetration Testing</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Learn to identify vulnerabilities and perform ethical hacking techniques.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-red-600 dark:text-red-400 font-medium">Cybersecurity</span>
+                                <button onclick="openTutorial('coming-soon')" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-red-300 rounded">Start Tutorial →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tutorial-card" data-category="cybersecurity" data-difficulty="advanced">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm font-medium rounded-full">Advanced</span>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">5 hours</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Advanced Threat Detection</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Implement SIEM solutions, threat hunting, and incident response.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-red-600 dark:text-red-400 font-medium">Cybersecurity</span>
+                                <button onclick="openTutorial('coming-soon')" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-red-300 rounded">Start Tutorial →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- No Results Message -->
+            <div id="noTutorialsMessage" class="text-center py-12 hidden">
+                <div class="text-gray-500 dark:text-gray-400 text-lg mb-4">No tutorials found matching your criteria</div>
+                <button onclick="clearTutorialFilters()" class="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-300">
+                    Clear Filters
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Frequently Asked Questions</h2>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="text-center">
+                                <div class="text-4xl mb-4">⏱️</div>
+                                <h3 class="text-xl font-bold">Timeline</h3>
+                                <p class="text-sm opacity-90 mt-2">How long does it take?</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="text-center">
+                                <p class="text-sm leading-relaxed">The timeline varies by individual and career path. Generally, beginner level takes 3-6 months, intermediate 6-12 months, and expert level 1-2 years of consistent learning and practice.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="text-center">
+                                <div class="text-4xl mb-4">🚀</div>
+                                <h3 class="text-xl font-bold">Experience</h3>
+                                <p class="text-sm opacity-90 mt-2">Do I need prior experience?</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="text-center">
+                                <p class="text-sm leading-relaxed">No prior experience is required! Our roadmaps start from the absolute basics and gradually build up your skills. Each level is designed to be accessible to complete beginners.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="text-center">
+                                <div class="text-4xl mb-4">🔄</div>
+                                <h3 class="text-xl font-bold">Updates</h3>
+                                <p class="text-sm opacity-90 mt-2">Are roadmaps updated?</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="text-center">
+                                <p class="text-sm leading-relaxed">Yes! We regularly update our roadmaps to reflect the latest industry trends, tools, and technologies. The tech industry evolves quickly, and we ensure our content stays current.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="text-center">
+                                <div class="text-4xl mb-4">💰</div>
+                                <h3 class="text-xl font-bold">Cost</h3>
+                                <p class="text-sm opacity-90 mt-2">Is it free to use?</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="text-center">
+                                <p class="text-sm leading-relaxed">Career Compass is completely free! We believe everyone should have access to quality career guidance. All roadmaps, resources, and features are available at no cost.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="text-center">
+                                <div class="text-4xl mb-4">🎯</div>
+                                <h3 class="text-xl font-bold">Focus</h3>
+                                <p class="text-sm opacity-90 mt-2">How to stay focused?</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="text-center">
+                                <p class="text-sm leading-relaxed">Set clear goals, create a study schedule, practice regularly, and don't be afraid to ask for help. Join communities and work on real projects to stay motivated.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="text-center">
+                                <div class="text-4xl mb-4">🤝</div>
+                                <h3 class="text-xl font-bold">Support</h3>
+                                <p class="text-sm opacity-90 mt-2">Need help?</p>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="text-center">
+                                <p class="text-sm leading-relaxed">We're here to help! Use our feedback form below to ask questions, suggest improvements, or get personalized guidance on your career journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback & Questions Section -->
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Have Questions or Feedback?</h2>
+            <div class="max-w-2xl mx-auto">
+                <form id="feedbackForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="your@email.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                        <select id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+                            <option value="">Select a topic</option>
+                            <option value="general">General Question</option>
+                            <option value="roadmap">Roadmap Guidance</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Tell us what's on your mind..."></textarea>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="newsletter" name="newsletter" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+                        <label for="newsletter" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                            Subscribe to our newsletter for career tips and updates
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                        Send Message
+                    </button>
+                </form>
+                
+                <div id="formMessage" class="mt-4 p-4 rounded-lg hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorialModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 dark:text-white mb-2"></h2>
+                        <div class="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                            <span id="modalCategory" class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full"></span>
+                            <span id="modalDifficulty" class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full"></span>
+                            <span id="modalDuration" class="text-gray-500 dark:text-gray-400"></span>
+                        </div>
+                    </div>
+                    <button onclick="closeTutorial()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-300 rounded-lg p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="modalContent" class="prose dark:prose-invert max-w-none">
+                    <!-- Tutorial content will be loaded here -->
+                </div>
+                
+                <!-- Video Section -->
+                <div id="videoSection" class="mt-6 hidden">
+                    <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4 flex items-center">
+                        <span class="text-red-500 mr-2">📹</span>
+                        Video Tutorial
+                        <span class="ml-2 px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-medium rounded-full">
+                            Click Play Button Below
+                        </span>
+                    </h3>
+                    <div class="relative bg-black rounded-lg overflow-hidden">
+                        <div id="videoPlayer" class="w-full aspect-video bg-gray-900 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <p class="text-lg font-semibold mb-2">Video Coming Soon</p>
+                                <p class="text-sm text-gray-400">High-quality video tutorial will be available here</p>
+                            </div>
+                        </div>
+                        <div id="playButton" class="absolute inset-0 flex items-center justify-center" style="display: flex;">
+                            <button onclick="playVideo()" class="bg-red-600 hover:bg-red-700 text-white rounded-full p-6 transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-red-300 animate-pulse">
+                                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Video Controls -->
+                    <div class="mt-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Duration: <span id="videoDuration">45:00</span></span>
+                            <div class="flex items-center space-x-2">
+                                <span id="videoStatus" class="text-sm text-gray-600 dark:text-gray-400">Ready to play</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Control Buttons -->
+                        <div class="flex items-center justify-center space-x-4">
+                            <button onclick="playPauseVideo()" id="playPauseBtn" class="flex items-center space-x-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-300">
+                                <svg id="playIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <svg id="pauseIcon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                                </svg>
+                                <span id="playPauseText">Play</span>
+                            </button>
+                            
+                            <button onclick="toggleMute()" id="muteBtn" class="flex items-center space-x-2 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                                <svg id="unmuteIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+                                </svg>
+                                <svg id="muteIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+                                </svg>
+                                <span id="muteText">Mute</span>
+                            </button>
+                            
+                            <button onclick="toggleFullscreen()" class="flex items-center space-x-2 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                </svg>
+                                <span>Fullscreen</span>
+                            </button>
+                            
+                            <button onclick="restartVideo()" class="flex items-center space-x-2 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                </svg>
+                                <span>Restart</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="mt-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-600 dark:text-gray-400">0:00</span>
+                                <div class="flex-1 bg-gray-300 dark:bg-gray-600 rounded-full h-2">
+                                    <div id="progressBar" class="bg-primary-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                                <span id="currentTime" class="text-xs text-gray-600 dark:text-gray-400">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex justify-between items-center">
+                    <button onclick="closeTutorial()" class="px-6 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                        Close
+                    </button>
+                    <div class="flex space-x-3">
+                        <button onclick="addToFavorites()" class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                            </svg>
+                            <span>Save</span>
+                        </button>
+                        <button onclick="startTutorial()" class="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-300 flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Start Learning</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 id="authTitle" class="text-2xl font-bold text-gray-800 dark:text-white">Login</h3>
+                    <button onclick="closeAuthModal()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <form id="authForm" onsubmit="handleAuth(event)">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="authName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                            <input type="text" id="authName" name="name" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Enter your full name">
+                        </div>
+                        
+                        <div>
+                            <label for="authEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                            <input type="email" id="authEmail" name="email" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Enter your email">
+                        </div>
+                        
+                        <div>
+                            <label for="authPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                            <input type="password" id="authPassword" name="password" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Enter your password">
+                        </div>
+                        
+                        <div id="confirmPasswordDiv" class="hidden">
+                            <label for="authConfirmPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
+                            <input type="password" id="authConfirmPassword" name="confirmPassword" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Confirm your password">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button type="submit" id="authSubmitBtn" class="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                            Login
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-4 text-center">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        <span id="authSwitchText">Don't have an account?</span>
+                        <button id="authSwitchBtn" onclick="toggleAuthMode()" class="text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-200 font-medium ml-1">
+                            Sign up
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard -->
+    <div id="userDashboard" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-white">My Dashboard</h3>
+                        <p id="userWelcome" class="text-gray-600 dark:text-gray-400">Welcome back!</p>
+                    </div>
+                    <button onclick="closeDashboard()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Dashboard Tabs -->
+                <div class="flex space-x-1 mb-6 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+                    <button onclick="showDashboardTab('saved')" id="savedTab" class="dashboard-tab flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-300 bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm">
+                        📚 Saved Tutorials
+                    </button>
+                    <button onclick="showDashboardTab('progress')" id="progressTab" class="dashboard-tab flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                        📊 Progress
+                    </button>
+                    <button onclick="showDashboardTab('notes')" id="notesTab" class="dashboard-tab flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                        📝 Notes
+                    </button>
+                </div>
+                
+                <!-- Saved Tutorials Tab -->
+                <div id="savedContent" class="dashboard-content">
+                    <div class="mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Your Saved Tutorials</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Tutorials you've saved for later</p>
+                    </div>
+                    <div id="savedTutorialsList" class="space-y-3">
+                        <!-- Saved tutorials will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Progress Tab -->
+                <div id="progressContent" class="dashboard-content hidden">
+                    <div class="mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Your Learning Progress</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Track your journey across all career paths</p>
+                    </div>
+                    <div id="progressOverview" class="space-y-4">
+                        <!-- Progress overview will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Notes Tab -->
+                <div id="notesContent" class="dashboard-content hidden">
+                    <div class="mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Personal Notes</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Keep track of your learning insights and goals</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex space-x-3">
+                            <input type="text" id="noteTitle" placeholder="Note title..." class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            <button onclick="addNote()" class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition duration-300">
+                                Add Note
+                            </button>
+                        </div>
+                        <div id="notesList" class="space-y-3">
+                            <!-- Notes will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-300">© 2024 Career Compass. Built with ❤️ to help you succeed.</p>
+            <p class="text-sm text-gray-400 mt-2">Made with HTML, Tailwind CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <script>
+        // User Authentication & Dashboard System
+        let currentUser = null;
+        let isLoginMode = true;
+        
+        // Initialize user state on page load
+        function initUserState() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateAuthButton();
+            }
+        }
+        
+        // Update auth button based on login state
+        function updateAuthButton() {
+            const authButton = document.getElementById('authButton');
+            const authButtonText = document.getElementById('authButtonText');
+            
+            if (currentUser) {
+                authButtonText.textContent = 'Dashboard';
+                authButton.onclick = openDashboard;
+            } else {
+                authButtonText.textContent = 'Login';
+                authButton.onclick = openAuthModal;
+            }
+        }
+        
+        // Open auth modal
+        function openAuthModal() {
+            document.getElementById('authModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close auth modal
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Toggle between login and signup modes
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            const title = document.getElementById('authTitle');
+            const submitBtn = document.getElementById('authSubmitBtn');
+            const switchText = document.getElementById('authSwitchText');
+            const switchBtn = document.getElementById('authSwitchBtn');
+            const confirmPasswordDiv = document.getElementById('confirmPasswordDiv');
+            
+            if (isLoginMode) {
+                title.textContent = 'Login';
+                submitBtn.textContent = 'Login';
+                switchText.textContent = "Don't have an account?";
+                switchBtn.textContent = 'Sign up';
+                confirmPasswordDiv.classList.add('hidden');
+            } else {
+                title.textContent = 'Sign Up';
+                submitBtn.textContent = 'Sign Up';
+                switchText.textContent = 'Already have an account?';
+                switchBtn.textContent = 'Login';
+                confirmPasswordDiv.classList.remove('hidden');
+            }
+        }
+        
+        // Handle authentication form submission
+        function handleAuth(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const userData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: formData.get('password')
+            };
+            
+            if (!isLoginMode) {
+                const confirmPassword = formData.get('confirmPassword');
+                if (userData.password !== confirmPassword) {
+                    showNotification('Passwords do not match!', 'error');
+                    return;
+                }
+            }
+            
+            // Simple validation
+            if (!userData.name || !userData.email || !userData.password) {
+                showNotification('Please fill in all fields!', 'error');
+                return;
+            }
+            
+            if (isLoginMode) {
+                loginUser(userData);
+            } else {
+                signupUser(userData);
+            }
+        }
+        
+        // Login user
+        function loginUser(userData) {
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = users[userData.email];
+            
+            if (user && user.password === userData.password) {
+                currentUser = { name: user.name, email: user.email };
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                updateAuthButton();
+                closeAuthModal();
+                showNotification(`Welcome back, ${user.name}!`, 'success');
+            } else {
+                showNotification('Invalid email or password!', 'error');
+            }
+        }
+        
+        // Signup user
+        function signupUser(userData) {
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            
+            if (users[userData.email]) {
+                showNotification('User already exists!', 'error');
+                return;
+            }
+            
+            users[userData.email] = {
+                name: userData.name,
+                email: userData.email,
+                password: userData.password,
+                savedTutorials: [],
+                notes: [],
+                createdAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('users', JSON.stringify(users));
+            currentUser = { name: userData.name, email: userData.email };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            updateAuthButton();
+            closeAuthModal();
+            showNotification(`Welcome, ${userData.name}! Account created successfully.`, 'success');
+        }
+        
+        // Open dashboard
+        function openDashboard() {
+            if (!currentUser) {
+                openAuthModal();
+                return;
+            }
+            
+            document.getElementById('userWelcome').textContent = `Welcome back, ${currentUser.name}!`;
+            loadDashboardData();
+            document.getElementById('userDashboard').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close dashboard
+        function closeDashboard() {
+            document.getElementById('userDashboard').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Load dashboard data
+        function loadDashboardData() {
+            loadSavedTutorials();
+            loadProgressOverview();
+            loadNotes();
+        }
+        
+        // Load saved tutorials
+        function loadSavedTutorials() {
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = users[currentUser.email];
+            const savedTutorials = user ? user.savedTutorials : [];
+            
+            const container = document.getElementById('savedTutorialsList');
+            
+            if (savedTutorials.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                        <p>No saved tutorials yet</p>
+                        <p class="text-sm">Save tutorials from the Tutorials section to see them here</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = savedTutorials.map(tutorialId => {
+                const tutorial = tutorialData[tutorialId];
+                if (!tutorial) return '';
+                
+                return `
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 flex items-center justify-between">
+                        <div class="flex-1">
+                            <h5 class="font-semibold text-gray-800 dark:text-white">${tutorial.title}</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">${tutorial.category} • ${tutorial.difficulty} • ${tutorial.duration}</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openTutorial('${tutorialId}')" class="px-3 py-1 bg-primary-500 text-white rounded text-sm hover:bg-primary-600 transition duration-300">
+                                View
+                            </button>
+                            <button onclick="removeSavedTutorial('${tutorialId}')" class="px-3 py-1 bg-red-500 text-white rounded text-sm hover:bg-red-600 transition duration-300">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Load progress overview
+        function loadProgressOverview() {
+            const progress = loadProgress();
+            const totalSteps = document.querySelectorAll('.roadmap-step').length;
+            const completedSteps = Object.values(progress).filter(Boolean).length;
+            const percentage = totalSteps > 0 ? Math.round((completedSteps / totalSteps) * 100) : 0;
+            
+            const container = document.getElementById('progressOverview');
+            container.innerHTML = `
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900 dark:to-blue-900 rounded-lg p-6">
+                    <h5 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Overall Progress</h5>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-400">Completed Steps</span>
+                            <span class="font-bold text-green-600">${completedSteps}/${totalSteps}</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-green-400 to-green-600 h-3 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="text-center text-2xl font-bold text-gray-800 dark:text-white">${percentage}%</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Load notes
+        function loadNotes() {
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = users[currentUser.email];
+            const notes = user ? user.notes : [];
+            
+            const container = document.getElementById('notesList');
+            
+            if (notes.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                        <p>No notes yet</p>
+                        <p class="text-sm">Add your first note above</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = notes.map((note, index) => `
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h6 class="font-semibold text-gray-800 dark:text-white">${note.title}</h6>
+                        <button onclick="deleteNote(${index})" class="text-red-500 hover:text-red-700 text-sm">Delete</button>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">${note.content}</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500 mt-2">${new Date(note.createdAt).toLocaleDateString()}</p>
+                </div>
+            `).join('');
+        }
+        
+        // Add note
+        function addNote() {
+            const titleInput = document.getElementById('noteTitle');
+            const title = titleInput.value.trim();
+            
+            if (!title) {
+                showNotification('Please enter a note title!', 'error');
+                return;
+            }
+            
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = users[currentUser.email];
+            
+            if (!user.notes) user.notes = [];
+            
+            user.notes.push({
+                title: title,
+                content: 'Click to edit...',
+                createdAt: new Date().toISOString()
+            });
+            
+            localStorage.setItem('users', JSON.stringify(users));
+            titleInput.value = '';
+            loadNotes();
+            showNotification('Note added successfully!', 'success');
+        }
+        
+        // Delete note
+        function deleteNote(index) {
+            if (confirm('Are you sure you want to delete this note?')) {
+                const users = JSON.parse(localStorage.getItem('users') || '{}');
+                const user = users[currentUser.email];
+                
+                user.notes.splice(index, 1);
+                localStorage.setItem('users', JSON.stringify(users));
+                loadNotes();
+                showNotification('Note deleted!', 'info');
+            }
+        }
+        
+        // Remove saved tutorial
+        function removeSavedTutorial(tutorialId) {
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = users[currentUser.email];
+            
+            user.savedTutorials = user.savedTutorials.filter(id => id !== tutorialId);
+            localStorage.setItem('users', JSON.stringify(users));
+            loadSavedTutorials();
+            showNotification('Tutorial removed from saved list!', 'info');
+        }
+        
+        // Show dashboard tab
+        function showDashboardTab(tab) {
+            // Hide all content
+            document.querySelectorAll('.dashboard-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active state from all tabs
+            document.querySelectorAll('.dashboard-tab').forEach(tab => {
+                tab.classList.remove('bg-white', 'dark:bg-gray-600', 'text-gray-900', 'dark:text-white', 'shadow-sm');
+                tab.classList.add('text-gray-600', 'dark:text-gray-400', 'hover:text-gray-900', 'dark:hover:text-white');
+            });
+            
+            // Show selected content
+            document.getElementById(tab + 'Content').classList.remove('hidden');
+            
+            // Add active state to selected tab
+            const activeTab = document.getElementById(tab + 'Tab');
+            activeTab.classList.add('bg-white', 'dark:bg-gray-600', 'text-gray-900', 'dark:text-white', 'shadow-sm');
+            activeTab.classList.remove('text-gray-600', 'dark:text-gray-400', 'hover:text-gray-900', 'dark:hover:text-white');
+        }
+        
+        // Theme management
+        function toggleTheme() {
+            const body = document.body;
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                // Dark mode: show moon icon, hide sun
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                // Light mode: show sun icon, hide moon
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Initialize theme on page load
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                // Dark mode: show moon icon, hide sun
+                document.body.classList.add('dark');
+                document.getElementById('sun-icon').classList.add('hidden');
+                document.getElementById('moon-icon').classList.remove('hidden');
+            } else {
+                // Light mode: show sun icon, hide moon
+                document.body.classList.remove('dark');
+                document.getElementById('sun-icon').classList.remove('hidden');
+                document.getElementById('moon-icon').classList.add('hidden');
+            }
+        }
+
+        // Career data
+        const careerData = {
+            webdev: {
+                title: "Web Development Roadmap",
+                levels: {
+                    beginner: {
+                        title: "Beginner Level",
+                        steps: [
+                            "Learn HTML fundamentals and semantic markup",
+                            "Master CSS including Flexbox and Grid",
+                            "Understand JavaScript basics and DOM manipulation",
+                            "Build your first responsive website",
+                            "Learn version control with Git and GitHub"
+                        ]
+                    },
+                    intermediate: {
+                        title: "Intermediate Level",
+                        steps: [
+                            "Master a JavaScript framework (React, Vue, or Angular)",
+                            "Learn backend development with Node.js or Python",
+                            "Understand databases (SQL and NoSQL)",
+                            "Implement authentication and security best practices",
+                            "Deploy applications using cloud platforms"
+                        ]
+                    },
+                    expert: {
+                        title: "Expert Level",
+                        steps: [
+                            "Design and implement scalable architectures",
+                            "Master advanced performance optimization techniques",
+                            "Lead development teams and mentor junior developers",
+                            "Contribute to open source projects",
+                            "Stay updated with latest web technologies and trends"
+                        ]
+                    }
+                }
+            },
+            datascience: {
+                title: "Data Science Roadmap",
+                levels: {
+                    beginner: {
+                        title: "Beginner Level",
+                        steps: [
+                            "Learn Python programming fundamentals",
+                            "Master data manipulation with Pandas and NumPy",
+                            "Understand basic statistics and probability",
+                            "Learn data visualization with Matplotlib and Seaborn",
+                            "Practice with real-world datasets"
+                        ]
+                    },
+                    intermediate: {
+                        title: "Intermediate Level",
+                        steps: [
+                            "Master machine learning algorithms and scikit-learn",
+                            "Learn SQL for database querying",
+                            "Understand data preprocessing and feature engineering",
+                            "Explore Jupyter notebooks and data analysis workflows",
+                            "Work on end-to-end data science projects"
+                        ]
+                    },
+                    expert: {
+                        title: "Expert Level",
+                        steps: [
+                            "Master deep learning frameworks (TensorFlow, PyTorch)",
+                            "Implement advanced ML algorithms and neural networks",
+                            "Design and deploy ML models in production",
+                            "Lead data science teams and strategic initiatives",
+                            "Contribute to research and publish findings"
+                        ]
+                    }
+                }
+            },
+            aiml: {
+                title: "AI/ML Roadmap",
+                levels: {
+                    beginner: {
+                        title: "Beginner Level",
+                        steps: [
+                            "Learn Python and mathematical foundations",
+                            "Understand linear algebra and calculus basics",
+                            "Master data preprocessing and visualization",
+                            "Learn supervised learning algorithms",
+                            "Practice with classification and regression problems"
+                        ]
+                    },
+                    intermediate: {
+                        title: "Intermediate Level",
+                        steps: [
+                            "Master deep learning fundamentals and neural networks",
+                            "Learn TensorFlow or PyTorch frameworks",
+                            "Understand unsupervised learning and clustering",
+                            "Implement computer vision and NLP projects",
+                            "Learn model evaluation and optimization techniques"
+                        ]
+                    },
+                    expert: {
+                        title: "Expert Level",
+                        steps: [
+                            "Research and implement cutting-edge AI models",
+                            "Master advanced topics like GANs and transformers",
+                            "Design and deploy AI systems at scale",
+                            "Lead AI research teams and publish papers",
+                            "Stay current with latest AI breakthroughs"
+                        ]
+                    }
+                }
+            },
+            cybersecurity: {
+                title: "Cybersecurity Roadmap",
+                levels: {
+                    beginner: {
+                        title: "Beginner Level",
+                        steps: [
+                            "Learn networking fundamentals and protocols",
+                            "Understand operating systems (Linux, Windows)",
+                            "Master basic security concepts and threats",
+                            "Learn about encryption and cryptography basics",
+                            "Practice with security tools and techniques"
+                        ]
+                    },
+                    intermediate: {
+                        title: "Intermediate Level",
+                        steps: [
+                            "Master penetration testing and ethical hacking",
+                            "Learn incident response and forensics",
+                            "Understand network security and firewalls",
+                            "Implement security policies and procedures",
+                            "Obtain relevant certifications (Security+, CEH)"
+                        ]
+                    },
+                    expert: {
+                        title: "Expert Level",
+                        steps: [
+                            "Lead security architecture and strategy",
+                            "Master advanced threat detection and response",
+                            "Design and implement enterprise security solutions",
+                            "Mentor junior security professionals",
+                            "Stay updated with emerging threats and defenses"
+                        ]
+                    }
+                }
+            }
+        };
+
+        let currentCareer = null;
+
+        function selectCareer(career) {
+            currentCareer = career;
+            updateCareerButtons();
+            renderRoadmap(career);
+            
+            // Smooth scroll to roadmap section
+            const roadmapSection = document.getElementById('roadmap');
+            if (roadmapSection) {
+                roadmapSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        function updateCareerButtons() {
+            document.querySelectorAll('.career-btn').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-opacity-50');
+                if (btn.dataset.career === currentCareer) {
+                    btn.classList.add('ring-4', 'ring-opacity-50');
+                }
+            });
+        }
+
+        function renderRoadmap(career) {
+            const container = document.getElementById('roadmap-container');
+            const data = careerData[career];
+            
+            container.innerHTML = `
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">${data.title}</h3>
+                    <div class="w-16 h-1 bg-primary-500 mx-auto rounded-full"></div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Check off steps as you complete them to track your progress!</p>
+                </div>
+                <div class="space-y-6">
+                    ${Object.entries(data.levels).map(([level, content]) => `
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                            <button onclick="toggleLevel('${career}-${level}')" class="level-btn w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-primary-500" data-level="${career}-${level}">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-xl font-semibold text-gray-800 dark:text-white">${content.title}</h4>
+                                    <span class="level-icon text-2xl text-primary-500">+</span>
+                                </div>
+                            </button>
+                            <div class="level-content hidden px-6 pb-6">
+                                <div class="space-y-3">
+                                    ${content.steps.map((step, index) => {
+                                        const stepId = `${career}-${level}-${index}`;
+                                        const isCompleted = isStepCompleted(stepId);
+                                        return `
+                                        <div class="roadmap-step flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg transition-all duration-300 ${isCompleted ? 'opacity-75' : ''}" data-step-id="${stepId}">
+                                            <div class="flex-shrink-0 flex items-center space-x-2">
+                                                <input 
+                                                    type="checkbox" 
+                                                    id="step-${stepId}" 
+                                                    class="step-checkbox w-5 h-5 text-primary-600 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 focus:ring-2" 
+                                                    ${isCompleted ? 'checked' : ''}
+                                                    onchange="toggleStepCompletion('${stepId}')"
+                                                >
+                                                <span class="w-6 h-6 ${isCompleted ? 'bg-green-500' : 'bg-primary-500'} text-white rounded-full flex items-center justify-center text-sm font-semibold">${index + 1}</span>
+                                            </div>
+                                            <div class="flex-1">
+                                                <p class="text-gray-700 dark:text-gray-300 ${isCompleted ? 'line-through' : ''}">${step}</p>
+                                                ${isCompleted ? '<span class="text-green-600 dark:text-green-400 text-sm font-medium">✔ Completed</span>' : ''}
+                                            </div>
+                                        </div>
+                                    `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Update progress stats after rendering
+            setTimeout(() => {
+                updateProgressStats();
+            }, 100);
+        }
+
+        function toggleLevel(levelId) {
+            const content = document.querySelector(`[data-level="${levelId}"]`).nextElementSibling;
+            const icon = document.querySelector(`[data-level="${levelId}"] .level-icon`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.textContent = '−';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '+';
+            }
+        }
+
+        // Feedback form handling
+        function handleFeedbackForm(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('feedbackForm');
+            const formMessage = document.getElementById('formMessage');
+            const formData = new FormData(form);
+            
+            // Get form values
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            const newsletter = formData.get('newsletter');
+            
+            // Basic validation
+            if (!name || !email || !subject || !message) {
+                showFormMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showFormMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Simulate form submission (in a real app, this would send to a server)
+            showFormMessage('Thank you for your feedback! We\'ll get back to you soon.', 'success');
+            form.reset();
+        }
+        
+        function showFormMessage(message, type) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.textContent = message;
+            formMessage.className = `mt-4 p-4 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'}`;
+            formMessage.classList.remove('hidden');
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (e.target.classList.contains('career-btn') || 
+                    e.target.classList.contains('level-btn')) {
+                    e.preventDefault();
+                    e.target.click();
+                }
+            }
+        });
+
+        // Initialize theme and select web development
+        initTheme();
+        selectCareer('webdev');
+        
+        // Add event listener for feedback form
+        document.getElementById('feedbackForm').addEventListener('submit', handleFeedbackForm);
+        
+        // Smooth scroll navigation
+        function initSmoothScroll() {
+            // Add smooth scroll behavior to all navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Progress Tracking System
+        const PROGRESS_STORAGE_KEY = 'roadmapProgress';
+        
+        // Load progress from LocalStorage
+        function loadProgress() {
+            try {
+                const saved = localStorage.getItem(PROGRESS_STORAGE_KEY);
+                return saved ? JSON.parse(saved) : {};
+            } catch (error) {
+                console.error('Error loading progress:', error);
+                return {};
+            }
+        }
+        
+        // Save progress to LocalStorage
+        function saveProgress(progress) {
+            try {
+                localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(progress));
+            } catch (error) {
+                console.error('Error saving progress:', error);
+            }
+        }
+        
+        // Check if a step is completed
+        function isStepCompleted(stepId) {
+            const progress = loadProgress();
+            return progress[stepId] === true;
+        }
+        
+        // Toggle step completion
+        function toggleStepCompletion(stepId) {
+            const progress = loadProgress();
+            const checkbox = document.getElementById(`step-${stepId}`);
+            const stepElement = document.querySelector(`[data-step-id="${stepId}"]`);
+            
+            if (checkbox.checked) {
+                progress[stepId] = true;
+                stepElement.classList.add('opacity-75');
+                stepElement.querySelector('.w-6.h-6').classList.remove('bg-primary-500');
+                stepElement.querySelector('.w-6.h-6').classList.add('bg-green-500');
+                stepElement.querySelector('p').classList.add('line-through');
+                
+                // Add completed indicator
+                const completedSpan = document.createElement('span');
+                completedSpan.className = 'text-green-600 dark:text-green-400 text-sm font-medium';
+                completedSpan.textContent = '✔ Completed';
+                stepElement.querySelector('.flex-1').appendChild(completedSpan);
+                
+                showNotification('Step marked as completed! 🎉', 'success');
+            } else {
+                progress[stepId] = false;
+                stepElement.classList.remove('opacity-75');
+                stepElement.querySelector('.w-6.h-6').classList.remove('bg-green-500');
+                stepElement.querySelector('.w-6.h-6').classList.add('bg-primary-500');
+                stepElement.querySelector('p').classList.remove('line-through');
+                
+                // Remove completed indicator
+                const completedSpan = stepElement.querySelector('.text-green-600, .text-green-400');
+                if (completedSpan) {
+                    completedSpan.remove();
+                }
+                
+                showNotification('Step marked as incomplete', 'info');
+            }
+            
+            saveProgress(progress);
+            updateProgressStats();
+        }
+        
+        // Update progress statistics
+        function updateProgressStats() {
+            const progress = loadProgress();
+            const totalSteps = document.querySelectorAll('.roadmap-step').length;
+            const completedSteps = Object.values(progress).filter(Boolean).length;
+            const percentage = totalSteps > 0 ? Math.round((completedSteps / totalSteps) * 100) : 0;
+            
+            // Update roadmap header progress
+            const headerElement = document.getElementById('roadmapProgressHeader');
+            if (headerElement && totalSteps > 0) {
+                headerElement.innerHTML = `
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Overall Progress</span>
+                            <span class="text-sm font-bold text-green-600">${completedSteps}/${totalSteps}</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-green-400 to-green-600 h-3 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="text-center text-sm font-medium text-gray-600 dark:text-gray-400 mt-2">${percentage}% Complete</div>
+                    </div>
+                `;
+            }
+            
+            // Update or create progress stats display (floating widget)
+            let statsElement = document.getElementById('progressStats');
+            if (!statsElement) {
+                statsElement = document.createElement('div');
+                statsElement.id = 'progressStats';
+                statsElement.className = 'fixed top-20 right-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 z-40 max-w-xs';
+                document.body.appendChild(statsElement);
+            }
+            
+            statsElement.innerHTML = `
+                <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-sm font-semibold text-gray-800 dark:text-white">Progress</h4>
+                    <button onclick="clearAllProgress()" class="text-xs text-red-500 hover:text-red-700">Clear All</button>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-600 dark:text-gray-400">Completed:</span>
+                        <span class="font-medium text-green-600">${completedSteps}/${totalSteps}</span>
+                    </div>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full transition-all duration-300" style="width: ${percentage}%"></div>
+                    </div>
+                    <div class="text-center text-xs text-gray-500 dark:text-gray-400">${percentage}% Complete</div>
+                </div>
+            `;
+        }
+        
+        // Clear all progress
+        function clearAllProgress() {
+            if (confirm('Are you sure you want to clear all progress? This action cannot be undone.')) {
+                localStorage.removeItem(PROGRESS_STORAGE_KEY);
+                showNotification('All progress cleared!', 'info');
+                // Re-render current roadmap to update UI
+                if (currentCareer) {
+                    renderRoadmap(currentCareer);
+                }
+                updateProgressStats();
+            }
+        }
+        
+        // Search functionality for roadmap steps
+        function initSearch() {
+            const searchInput = document.getElementById('roadmapSearch');
+            const clearButton = document.getElementById('clearSearch');
+            const searchResults = document.getElementById('searchResults');
+            const resultCount = document.getElementById('resultCount');
+            
+            if (!searchInput) return;
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                const roadmapSteps = document.querySelectorAll('.roadmap-step');
+                let visibleCount = 0;
+                
+                roadmapSteps.forEach(step => {
+                    const stepText = step.textContent.toLowerCase();
+                    const isVisible = searchTerm === '' || stepText.includes(searchTerm);
+                    
+                    step.style.display = isVisible ? 'flex' : 'none';
+                    if (isVisible) visibleCount++;
+                });
+                
+                // Show/hide search results
+                if (searchTerm === '') {
+                    searchResults.classList.add('hidden');
+                } else {
+                    searchResults.classList.remove('hidden');
+                    resultCount.textContent = visibleCount;
+                }
+                
+                // Show/hide clear button
+                if (searchTerm === '') {
+                    clearButton.style.display = 'none';
+                } else {
+                    clearButton.style.display = 'flex';
+                }
+            });
+            
+            // Clear search functionality
+            clearButton.addEventListener('click', function() {
+                searchInput.value = '';
+                searchInput.dispatchEvent(new Event('input'));
+                searchInput.focus();
+            });
+        }
+        
+        // Tutorial filtering functionality
+        function filterTutorials(category) {
+            const tutorialCards = document.querySelectorAll('.tutorial-card');
+            const filterButtons = document.querySelectorAll('.tutorial-filter-btn');
+            const noResultsMessage = document.getElementById('noTutorialsMessage');
+            const tutorialsGrid = document.getElementById('tutorialsGrid');
+            
+            // Update filter button states
+            filterButtons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = 'tutorial-filter-btn px-4 py-2 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-300';
+                } else {
+                    btn.className = 'tutorial-filter-btn px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300';
+                }
+            });
+            
+            // Filter tutorial cards
+            let visibleCount = 0;
+            tutorialCards.forEach(card => {
+                const cardCategory = card.dataset.category;
+                let isVisible = false;
+                
+                if (category === 'all') {
+                    isVisible = true;
+                } else if (category === 'video') {
+                    // Show only tutorials with videos
+                    const hasVideo = card.querySelector('[data-has-video="true"]') || 
+                                   card.querySelector('.bg-red-100, .bg-red-900') || 
+                                   card.textContent.includes('Video');
+                    isVisible = hasVideo;
+                } else {
+                    isVisible = cardCategory === category;
+                }
+                
+                if (isVisible) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.5s ease-out';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResultsMessage.classList.remove('hidden');
+                tutorialsGrid.classList.add('hidden');
+            } else {
+                noResultsMessage.classList.add('hidden');
+                tutorialsGrid.classList.remove('hidden');
+            }
+        }
+        
+        // Clear tutorial filters
+        function clearTutorialFilters() {
+            const tutorialCards = document.querySelectorAll('.tutorial-card');
+            const noResultsMessage = document.getElementById('noTutorialsMessage');
+            const tutorialsGrid = document.getElementById('tutorialsGrid');
+            const searchInput = document.getElementById('tutorialSearch');
+            
+            // Show all cards
+            tutorialCards.forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            // Reset filter buttons
+            filterTutorials('all');
+            
+            // Clear search
+            if (searchInput) {
+                searchInput.value = '';
+            }
+            
+            // Hide no results message
+            noResultsMessage.classList.add('hidden');
+            tutorialsGrid.classList.remove('hidden');
+        }
+        
+        // Tutorial search functionality
+        function initTutorialSearch() {
+            const searchInput = document.getElementById('tutorialSearch');
+            const tutorialCards = document.querySelectorAll('.tutorial-card');
+            const noResultsMessage = document.getElementById('noTutorialsMessage');
+            const tutorialsGrid = document.getElementById('tutorialsGrid');
+            
+            if (!searchInput) return;
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+                
+                tutorialCards.forEach(card => {
+                    const cardText = card.textContent.toLowerCase();
+                    const hasVideo = card.querySelector('[data-has-video="true"]') || 
+                                   card.querySelector('.bg-red-100, .bg-red-900') || 
+                                   card.textContent.includes('Video');
+                    
+                    // Enhanced search including video content
+                    const isVisible = searchTerm === '' || 
+                                    cardText.includes(searchTerm) ||
+                                    (searchTerm.includes('video') && hasVideo) ||
+                                    (searchTerm.includes('tutorial') && hasVideo);
+                    
+                    if (isVisible) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.5s ease-out';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResultsMessage.classList.remove('hidden');
+                    tutorialsGrid.classList.add('hidden');
+                } else {
+                    noResultsMessage.classList.add('hidden');
+                    tutorialsGrid.classList.remove('hidden');
+                }
+            });
+        }
+        
+        // Tutorial data
+        const tutorialData = {
+            'html-css-fundamentals': {
+                title: 'HTML & CSS Fundamentals',
+                category: 'Web Development',
+                difficulty: 'Beginner',
+                duration: '45 min',
+                hasVideo: true,
+                videoDuration: '45:00',
+                videoUrl: 'https://www.youtube.com/embed/HD13eq_Pmp8', // FreeCodeCamp HTML CSS Tutorial
+                content: `
+                    <div class="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg mb-6">
+                        <h3 class="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-2">🎯 Learning Objectives</h3>
+                        <p class="text-blue-700 dark:text-blue-300">By the end of this tutorial, you'll be able to build a complete website from scratch using HTML and CSS.</p>
+                    </div>
+                    
+                    <h3>📚 What You'll Learn</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> HTML structure and semantic markup</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> CSS styling and layout techniques</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Responsive design principles</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Best practices for web development</li>
+                    </ul>
+                    
+                    <h3>📋 Prerequisites</h3>
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">No prior experience required! This tutorial is perfect for complete beginners. We'll start from the very basics.</p>
+                    </div>
+                    
+                    <h3>📖 Course Outline</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-primary-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">1</span>
+                            <div>
+                                <strong>Introduction to HTML</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Learn the basic structure and essential tags</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-primary-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">2</span>
+                            <div>
+                                <strong>CSS Basics</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Styling your content with CSS</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-primary-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">3</span>
+                            <div>
+                                <strong>Layout Techniques</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Flexbox and Grid systems</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-primary-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">4</span>
+                            <div>
+                                <strong>Responsive Design</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Making your site work on all devices</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-primary-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">5</span>
+                            <div>
+                                <strong>Final Project</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Build your first complete website</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>🛠️ Required Resources</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-600">
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Code Editor</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">VS Code recommended (free download)</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-600">
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Web Browser</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Chrome, Firefox, or Safari for testing</p>
+                        </div>
+                    </div>
+                `
+            },
+            'react-complete-guide': {
+                title: 'React.js Complete Guide',
+                category: 'Web Development',
+                difficulty: 'Intermediate',
+                duration: '2 hours',
+                hasVideo: true,
+                videoDuration: '2:15:30',
+                videoUrl: 'https://www.youtube.com/embed/SqcY0GlETPk', // React Tutorial for Beginners
+                content: `
+                    <h3>What You'll Learn</h3>
+                    <ul>
+                        <li>React components and JSX</li>
+                        <li>State management with hooks</li>
+                        <li>Props and component communication</li>
+                        <li>Building complete applications</li>
+                    </ul>
+                    
+                    <h3>Prerequisites</h3>
+                    <p>Basic knowledge of HTML, CSS, and JavaScript is recommended.</p>
+                    
+                    <h3>Course Outline</h3>
+                    <ol>
+                        <li><strong>React Basics</strong> - Components and JSX</li>
+                        <li><strong>State & Props</strong> - Managing component data</li>
+                        <li><strong>Hooks</strong> - useState, useEffect, and custom hooks</li>
+                        <li><strong>Event Handling</strong> - User interactions</li>
+                        <li><strong>Project</strong> - Build a todo application</li>
+                    </ol>
+                `
+            },
+            'full-stack-development': {
+                title: 'Full-Stack Development',
+                category: 'Web Development',
+                difficulty: 'Advanced',
+                duration: '4 hours',
+                hasVideo: true,
+                videoDuration: '4:30:45',
+                videoUrl: 'https://www.youtube.com/embed/Oe421EPjeBE', // Full Stack Web Development Course
+                content: `
+                    <h3>What You'll Learn</h3>
+                    <ul>
+                        <li>Backend development with Node.js</li>
+                        <li>Database design and MongoDB</li>
+                        <li>API development with Express</li>
+                        <li>Frontend integration with React</li>
+                    </ul>
+                    
+                    <h3>Prerequisites</h3>
+                    <p>Intermediate knowledge of JavaScript and React is required.</p>
+                    
+                    <h3>Course Outline</h3>
+                    <ol>
+                        <li><strong>Backend Setup</strong> - Node.js and Express server</li>
+                        <li><strong>Database Design</strong> - MongoDB and data modeling</li>
+                        <li><strong>API Development</strong> - RESTful API endpoints</li>
+                        <li><strong>Frontend Integration</strong> - Connecting React to backend</li>
+                        <li><strong>Project</strong> - Complete full-stack application</li>
+                    </ol>
+                `
+            },
+            'python-data-science': {
+                title: 'Python for Data Science',
+                category: 'Data Science',
+                difficulty: 'Beginner',
+                duration: '1 hour',
+                hasVideo: true,
+                videoDuration: '1:15:30',
+                videoUrl: 'https://www.youtube.com/embed/rfscVS0vtbw', // Python for Beginners - Full Course
+                content: `
+                    <div class="bg-green-50 dark:bg-green-900 p-4 rounded-lg mb-6">
+                        <h3 class="text-lg font-semibold text-green-800 dark:text-green-200 mb-2">🐍 Python Learning Path</h3>
+                        <p class="text-green-700 dark:text-green-300">Master Python programming for data science with hands-on projects and real datasets.</p>
+                    </div>
+                    
+                    <h3>📚 What You'll Learn</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Python syntax and fundamentals</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> NumPy for numerical computing</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Pandas for data manipulation</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Data visualization with Matplotlib</li>
+                    </ul>
+                    
+                    <h3>📋 Prerequisites</h3>
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">No prior programming experience required! Perfect for complete beginners.</p>
+                    </div>
+                    
+                    <h3>🛠️ Required Tools</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-600">
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Python Installation</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Python 3.8+ and pip package manager</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-600">
+                            <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Jupyter Notebook</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Interactive development environment</p>
+                        </div>
+                    </div>
+                `
+            },
+            'javascript-basics': {
+                title: 'JavaScript Fundamentals',
+                category: 'Web Development',
+                difficulty: 'Beginner',
+                duration: '2 hours',
+                hasVideo: true,
+                videoDuration: '2:30:15',
+                videoUrl: 'https://www.youtube.com/embed/PkZNo7MFNFg', // JavaScript Tutorial for Beginners
+                content: `
+                    <div class="bg-yellow-50 dark:bg-yellow-900 p-4 rounded-lg mb-6">
+                        <h3 class="text-lg font-semibold text-yellow-800 dark:text-yellow-200 mb-2">⚡ JavaScript Mastery</h3>
+                        <p class="text-yellow-700 dark:text-yellow-300">Learn JavaScript from scratch and build interactive web applications.</p>
+                    </div>
+                    
+                    <h3>📚 What You'll Learn</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Variables, functions, and objects</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> DOM manipulation and events</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Async programming with Promises</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Modern ES6+ features</li>
+                    </ul>
+                `
+            },
+            'java-programming': {
+                title: 'Java Programming Basics',
+                category: 'Programming',
+                difficulty: 'Beginner',
+                duration: '3 hours',
+                hasVideo: true,
+                videoDuration: '3:45:20',
+                videoUrl: 'https://www.youtube.com/embed/eIrMbAQSU34', // Java Tutorial for Beginners
+                content: `
+                    <div class="bg-orange-50 dark:bg-orange-900 p-4 rounded-lg mb-6">
+                        <h3 class="text-lg font-semibold text-orange-800 dark:text-orange-200 mb-2">☕ Java Programming</h3>
+                        <p class="text-orange-700 dark:text-orange-300">Master Java programming language with object-oriented concepts and real-world projects.</p>
+                    </div>
+                    
+                    <h3>📚 What You'll Learn</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Java syntax and data types</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Object-oriented programming concepts</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Exception handling and collections</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> File I/O and multithreading</li>
+                    </ul>
+                `
+            },
+            'coming-soon': {
+                title: 'Tutorial Coming Soon',
+                category: 'General',
+                difficulty: 'All Levels',
+                duration: 'TBD',
+                content: `
+                    <h3>This Tutorial is Coming Soon!</h3>
+                    <p>We're working hard to bring you this amazing tutorial. Check back soon for updates!</p>
+                    
+                    <h3>What to Expect</h3>
+                    <ul>
+                        <li>Comprehensive step-by-step guide</li>
+                        <li>Hands-on projects and exercises</li>
+                        <li>Real-world examples and best practices</li>
+                        <li>Interactive learning experience</li>
+                    </ul>
+                    
+                    <h3>Stay Updated</h3>
+                    <p>Follow us for updates on new tutorials and learning resources!</p>
+                `
+            },
+            'ai-ml-intro': {
+                title: 'Introduction to AI & ML',
+                category: 'AI/ML',
+                difficulty: 'Beginner',
+                duration: '2 hours',
+                hasVideo: true,
+                videoDuration: '2:00:00',
+                videoUrl: 'https://www.youtube.com/embed/aircAruvnKk',
+                content: `
+                    <div class="bg-purple-50 dark:bg-purple-900 p-4 rounded-lg mb-6">
+                        <h3 class="text-lg font-semibold text-purple-800 dark:text-purple-200 mb-2">🤖 AI & Machine Learning</h3>
+                        <p class="text-purple-700 dark:text-purple-300">Understand AI concepts, machine learning types, and basic algorithms with practical examples.</p>
+                    </div>
+                    
+                    <h3>📚 What You'll Learn</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Introduction to Artificial Intelligence</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Types of Machine Learning (Supervised, Unsupervised, Reinforcement)</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Basic algorithms and their applications</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Data preprocessing and feature engineering</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Model evaluation and validation</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Real-world AI applications and case studies</li>
+                    </ul>
+                    
+                    <h3>📋 Prerequisites</h3>
+                    <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                        <p class="text-gray-700 dark:text-gray-300">Basic mathematics knowledge is helpful but not required. This tutorial is designed for complete beginners in AI/ML.</p>
+                    </div>
+                    
+                    <h3>🎯 Course Outline</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">1</span>
+                            <div>
+                                <strong>What is AI?</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Understanding artificial intelligence and its applications</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">2</span>
+                            <div>
+                                <strong>Machine Learning Types</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Supervised, unsupervised, and reinforcement learning</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">3</span>
+                            <div>
+                                <strong>Common Algorithms</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Linear regression, decision trees, neural networks</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">4</span>
+                            <div>
+                                <strong>Data Science Pipeline</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Data collection, preprocessing, and model training</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                            <span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">5</span>
+                            <div>
+                                <strong>Real-world Applications</strong>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Case studies and practical examples</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Tutorial modal functions
+        function openTutorial(tutorialId) {
+            const modal = document.getElementById('tutorialModal');
+            const tutorial = tutorialData[tutorialId];
+            const videoSection = document.getElementById('videoSection');
+            
+            if (!tutorial) {
+                alert('Tutorial not found!');
+                return;
+            }
+            
+            // Update modal content
+            document.getElementById('modalTitle').textContent = tutorial.title;
+            document.getElementById('modalCategory').textContent = tutorial.category;
+            document.getElementById('modalDifficulty').textContent = tutorial.difficulty;
+            document.getElementById('modalDuration').textContent = tutorial.duration;
+            document.getElementById('modalContent').innerHTML = tutorial.content;
+            
+            // Handle video section
+            if (tutorial.hasVideo) {
+                videoSection.classList.remove('hidden');
+                document.getElementById('videoDuration').textContent = tutorial.videoDuration;
+                // Store video URL for later use
+                videoSection.dataset.videoUrl = tutorial.videoUrl;
+                // Ensure play button is visible
+                const playButton = document.getElementById('playButton');
+                if (playButton) {
+                    playButton.style.display = 'flex';
+                }
+            } else {
+                videoSection.classList.add('hidden');
+            }
+            
+            // Show modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        
+        function closeTutorial() {
+            const modal = document.getElementById('tutorialModal');
+            const videoSection = document.getElementById('videoSection');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const playButton = document.getElementById('playButton');
+            
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            
+            // Reset video section
+            videoSection.classList.add('hidden');
+            videoPlayer.innerHTML = `
+                <div class="text-center text-white">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p class="text-lg font-semibold mb-2">Video Coming Soon</p>
+                    <p class="text-sm text-gray-400">High-quality video tutorial will be available here</p>
+                </div>
+            `;
+            playButton.style.display = 'flex';
+            
+            // Reset video state
+            isPlaying = false;
+            isMuted = false;
+            videoProgress = 0;
+            updatePlayPauseButton();
+            updateVideoStatus('Ready to play');
+            updateProgressBar(0);
+        }
+        
+        function startTutorial() {
+            const modal = document.getElementById('tutorialModal');
+            const tutorialTitle = document.getElementById('modalTitle').textContent;
+            
+            // Hide the modal
+            closeTutorial();
+            
+            // Show a success message with tutorial progress
+            showTutorialProgress(tutorialTitle);
+        }
+        
+        function showTutorialProgress(tutorialTitle) {
+            // Create a progress notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg transition-all duration-300';
+            notification.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                        <div class="font-semibold">Tutorial Started!</div>
+                        <div class="text-sm opacity-90">${tutorialTitle}</div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 4 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translate(-50%, -100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 4000);
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('tutorialModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTutorial();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTutorial();
+            }
+        });
+        
+        // Favorites functionality
+        function addToFavorites() {
+            if (!currentUser) {
+                showNotification('Please login to save tutorials!', 'error');
+                openAuthModal();
+                return;
+            }
+            
+            const tutorialTitle = document.getElementById('modalTitle').textContent;
+            const tutorialId = getTutorialIdByTitle(tutorialTitle);
+            
+            if (!tutorialId) {
+                showNotification('Tutorial not found!', 'error');
+                return;
+            }
+            
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = users[currentUser.email];
+            
+            if (!user.savedTutorials) user.savedTutorials = [];
+            
+            // Add to favorites if not already there
+            if (!user.savedTutorials.includes(tutorialId)) {
+                user.savedTutorials.push(tutorialId);
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // Show success notification
+                showNotification('Tutorial saved to favorites!', 'success');
+            } else {
+                showNotification('Tutorial already in favorites!', 'info');
+            }
+        }
+        
+        // Helper function to get tutorial ID by title
+        function getTutorialIdByTitle(title) {
+            for (const [id, tutorial] of Object.entries(tutorialData)) {
+                if (tutorial.title === title) {
+                    return id;
+                }
+            }
+            return null;
+        }
+        
+        // Notification system
+        function showNotification(message, type = 'success') {
+            const colors = {
+                success: 'bg-green-500',
+                info: 'bg-blue-500',
+                warning: 'bg-yellow-500',
+                error: 'bg-red-500'
+            };
+            
+            const icons = {
+                success: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+                info: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+                warning: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z',
+                error: 'M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+            };
+            
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-20 z-50 ${colors[type]} text-white px-6 py-4 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full`;
+            notification.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${icons[type]}"></path>
+                    </svg>
+                    <div class="font-semibold">${message}</div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Video functionality
+        let currentVideo = null;
+        let isPlaying = false;
+        let isMuted = false;
+        let videoProgress = 0;
+        let youtubePlayer = null;
+        let progressInterval = null;
+        
+        function playVideo() {
+            const videoSection = document.getElementById('videoSection');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const playButton = document.getElementById('playButton');
+            const videoUrl = videoSection.dataset.videoUrl;
+            
+            if (videoUrl) {
+                // Replace placeholder with actual video iframe
+                videoPlayer.innerHTML = `
+                    <iframe 
+                        id="youtubePlayer"
+                        src="${videoUrl}?enablejsapi=1&origin=${window.location.origin}&rel=0&modestbranding=1&showinfo=0" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        class="w-full h-full">
+                    </iframe>
+                `;
+                
+                // Hide play button
+                playButton.style.display = 'none';
+                
+                // Update video status
+                updateVideoStatus('Video loaded successfully!');
+                
+                // Initialize video controls
+                initializeVideoControls();
+                
+                // Auto-play the video
+                setTimeout(() => {
+                    playVideoContent();
+                }, 1000);
+                
+                showNotification('Video loaded and playing!', 'success');
+            } else {
+                showNotification('Video not available yet. Coming soon!', 'info');
+            }
+        }
+        
+        function initializeVideoControls() {
+            // Load YouTube API if not already loaded
+            if (!window.YT) {
+                const tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                const firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            }
+        }
+        
+        function playPauseVideo() {
+            const iframe = document.getElementById('youtubePlayer');
+            if (!iframe) {
+                // If video hasn't been loaded yet, load it first
+                playVideo();
+                return;
+            }
+            
+            if (isPlaying) {
+                pauseVideo();
+            } else {
+                playVideoContent();
+            }
+        }
+        
+        function playVideoContent() {
+            const iframe = document.getElementById('youtubePlayer');
+            if (iframe && iframe.contentWindow) {
+                // Send play command to YouTube iframe
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                isPlaying = true;
+                updatePlayPauseButton();
+                updateVideoStatus('Playing...');
+                startProgressUpdate();
+                
+                // Show notification
+                showNotification('Video is now playing!', 'success');
+            }
+        }
+        
+        function pauseVideo() {
+            const iframe = document.getElementById('youtubePlayer');
+            if (iframe && iframe.contentWindow) {
+                // Send pause command to YouTube iframe
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                isPlaying = false;
+                updatePlayPauseButton();
+                updateVideoStatus('Paused');
+            }
+        }
+        
+        function updatePlayPauseButton() {
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const playPauseText = document.getElementById('playPauseText');
+            
+            if (isPlaying) {
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+                playPauseText.textContent = 'Pause';
+            } else {
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                playPauseText.textContent = 'Play';
+            }
+        }
+        
+        function toggleMute() {
+            const iframe = document.getElementById('youtubePlayer');
+            if (!iframe) {
+                showNotification('Please load the video first!', 'warning');
+                return;
+            }
+            
+            const muteIcon = document.getElementById('muteIcon');
+            const unmuteIcon = document.getElementById('unmuteIcon');
+            const muteText = document.getElementById('muteText');
+            
+            if (isMuted) {
+                // Unmute
+                iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                isMuted = false;
+                muteIcon.classList.add('hidden');
+                unmuteIcon.classList.remove('hidden');
+                muteText.textContent = 'Mute';
+                updateVideoStatus('Unmuted');
+            } else {
+                // Mute
+                iframe.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+                isMuted = true;
+                muteIcon.classList.remove('hidden');
+                unmuteIcon.classList.add('hidden');
+                muteText.textContent = 'Unmute';
+                updateVideoStatus('Muted');
+            }
+        }
+        
+        function restartVideo() {
+            const iframe = document.getElementById('youtubePlayer');
+            if (!iframe) {
+                showNotification('Please load the video first!', 'warning');
+                return;
+            }
+            
+            // Seek to beginning
+            iframe.contentWindow.postMessage('{"event":"command","func":"seekTo","args":"0,true"}', '*');
+            videoProgress = 0;
+            updateProgressBar(0);
+            updateVideoStatus('Restarted');
+        }
+        
+        function toggleFullscreen() {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const iframe = document.getElementById('youtubePlayer');
+            
+            if (!iframe) {
+                showNotification('Please load the video first!', 'warning');
+                return;
+            }
+            
+            if (videoPlayer.requestFullscreen) {
+                videoPlayer.requestFullscreen();
+            } else if (videoPlayer.webkitRequestFullscreen) {
+                videoPlayer.webkitRequestFullscreen();
+            } else if (videoPlayer.msRequestFullscreen) {
+                videoPlayer.msRequestFullscreen();
+            }
+        }
+        
+        function updateVideoStatus(message) {
+            const statusElement = document.getElementById('videoStatus');
+            if (statusElement) {
+                statusElement.textContent = message;
+            }
+        }
+        
+        function startProgressUpdate() {
+            // Simulate progress update (in real implementation, this would use YouTube API)
+            const progressInterval = setInterval(() => {
+                if (isPlaying) {
+                    videoProgress += 0.5; // Simulate 0.5% progress per update
+                    if (videoProgress > 100) {
+                        videoProgress = 100;
+                        isPlaying = false;
+                        updatePlayPauseButton();
+                        updateVideoStatus('Completed');
+                        clearInterval(progressInterval);
+                    }
+                    updateProgressBar(videoProgress);
+                } else {
+                    clearInterval(progressInterval);
+                }
+            }, 1000);
+        }
+        
+        function updateProgressBar(progress) {
+            const progressBar = document.getElementById('progressBar');
+            const currentTime = document.getElementById('currentTime');
+            
+            if (progressBar) {
+                progressBar.style.width = progress + '%';
+            }
+            
+            if (currentTime) {
+                // Convert progress to time format (simplified)
+                const totalMinutes = 45; // Example duration
+                const currentMinutes = Math.floor((progress / 100) * totalMinutes);
+                const currentSeconds = Math.floor(((progress / 100) * totalMinutes) % 1 * 60);
+                currentTime.textContent = `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')}`;
+            }
+        }
+        
+        // YouTube API callback
+        function onYouTubeIframeAPIReady() {
+            // This function is called when YouTube API is ready
+            console.log('YouTube API ready');
+        }
+
+        // Video search functionality
+        function initVideoSearch() {
+            const videoSearchInput = document.getElementById('videoSearch');
+            const tutorialCards = document.querySelectorAll('.tutorial-card');
+            const noResultsMessage = document.getElementById('noTutorialsMessage');
+            const tutorialsGrid = document.getElementById('tutorialsGrid');
+            
+            if (!videoSearchInput) return;
+            
+            videoSearchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+                
+                tutorialCards.forEach(card => {
+                    const hasVideo = card.querySelector('[data-has-video="true"]') || 
+                                   card.querySelector('.bg-red-100, .bg-red-900') || 
+                                   card.textContent.includes('Video');
+                    
+                    if (!hasVideo) {
+                        card.style.display = 'none';
+                        return;
+                    }
+                    
+                    const cardText = card.textContent.toLowerCase();
+                    const isVisible = searchTerm === '' || cardText.includes(searchTerm);
+                    
+                    if (isVisible) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.5s ease-out';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResultsMessage.classList.remove('hidden');
+                    tutorialsGrid.classList.add('hidden');
+                } else {
+                    noResultsMessage.classList.add('hidden');
+                    tutorialsGrid.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Initialize all new features
+        initSmoothScroll();
+        initSearch();
+        initTutorialSearch();
+        initVideoSearch();
+        
+        // Initialize progress tracking
+        updateProgressStats();
+        
+        // Initialize user authentication
+        initUserState();
+    </script>
+</body>
+</html>
